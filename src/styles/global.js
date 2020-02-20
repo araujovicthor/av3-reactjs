@@ -23,7 +23,7 @@ export default createGlobalStyle`
 
   body, button, input {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     color: #333;
   }
 

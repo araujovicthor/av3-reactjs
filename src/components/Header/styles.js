@@ -13,7 +13,6 @@ export const Button = styled(NavLink)`
   border-left: 0;
   text-decoration: none;
   color: #333;
-  font-size: 13px;
 
   :first-child {
     border-left: 1px solid #333;
