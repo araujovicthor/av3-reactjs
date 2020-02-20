@@ -10,12 +10,13 @@ export const Button = styled(NavLink)`
   position: relative;
   padding: 10px 50px;
   border: 1px solid #333;
+  border-left: 0;
   text-decoration: none;
   color: #333;
   font-size: 13px;
 
-  :last-child {
-    left: -1px;
+  :first-child {
+    border-left: 1px solid #333;
   }
 
   &.active {
