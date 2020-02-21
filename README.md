@@ -3,11 +3,12 @@
 Implementar o mockup disponibilizado em https://tohs8z.axshare.com/
 
 ## Requisitos
-* Aplicação deverá ser um SPA, usando como base React & Redux
-* As droplists Country, State e City deverão ser contextualizadas de acordo com a
-seleção feita pelo usuário
-* Os dados na aba watch deverão ser obtidos de forma dinâmica. Sugestão de fonte:
-https://www.alphavantage.co/
+
+- Aplicação deverá ser um SPA, usando como base React & Redux
+- As droplists Country, State e City deverão ser contextualizadas de acordo com a
+  seleção feita pelo usuário
+- Os dados na aba watch deverão ser obtidos de forma dinâmica. Sugestão de fonte:
+  https://www.alphavantage.co/
 
 ## Avaliação
 
@@ -25,6 +26,12 @@ yarn install
 ```
 
 Configure as variáveis ambiente em .env.
+
+Inicie o JSON-Server
+
+```sh
+json-server server.json -p 3333 -d 1000~
+```
 
 Inicie a aplicação.
 

@@ -1,42 +1,37 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import ReactDatePicker from 'react-datepicker';
 import { useField } from '@unform/core';
 import PropTypes from 'prop-types';
 
 import { Container } from './styles';
-
 import 'react-datepicker/dist/react-datepicker.css';
 
-export default function DatePicker({ name, label, ...rest }) {
-  const datepickerRef = useRef(null);
+export default function DatePicker({ name, label }) {
+  const ref = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
-
-  const [date, setDate] = useState(defaultValue || null);
+  const [selected, setSelected] = useState(defaultValue);
 
   useEffect(() => {
     registerField({
       name: fieldName,
-      ref: datepickerRef.current,
+      ref: ref.current,
       path: 'props.selected',
-      clearValue: ref => {
-        ref.clear();
+      clearValue: pickerRef => {
+        pickerRef.clear();
       },
     });
-  }, [fieldName, registerField]);
+  }, [ref.current, fieldName]); // eslint-disable-line
 
   return (
     <Container>
       {label && <label htmlFor={fieldName}>{label}</label>}
-
       <ReactDatePicker
-        ref={datepickerRef}
-        selected={date}
-        onChange={setDate}
-        placeholderText="dd/mm/aaaa"
-        {...rest}
+        name={fieldName}
+        selected={selected}
+        onChange={date => setSelected(date)}
+        ref={ref}
       />
-
-      {error && <span style={{ color: '#f00' }}>{error}</span>}
+      {error && <span>{error}</span>}
     </Container>
   );
 }

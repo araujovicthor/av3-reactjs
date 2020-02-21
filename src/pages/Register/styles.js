@@ -18,6 +18,10 @@ export const Form = styled(Unform)`
   }
 `;
 
+export const Partner = styled.div`
+  background-color: #e9e9e9;
+`;
+
 export const Button = styled.div`
   display: flex;
   justify-content: flex-end;
