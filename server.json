@@ -1,16 +1,136 @@
 {
   "country": [
     {
-      "id": 0,
-      "title": "Select Country"
-    },
-    {
       "id": 1,
       "title": "Brazil"
     },
     {
       "id": 2,
       "title": "USA"
+    }
+  ],
+  "state": [
+    {
+      "id": 1,
+      "country": 1,
+      "title": "São Paulo"
+    },
+    {
+      "id": 2,
+      "country": 1,
+      "title": "Rio de Janeiro"
+    },
+    {
+      "id": 3,
+      "country": 1,
+      "title": "Bahia"
+    },
+    {
+      "id": 4,
+      "country": 2,
+      "title": "Texas"
+    },
+    {
+      "id": 5,
+      "country": 2,
+      "title": "Califórnia"
+    },
+    {
+      "id": 6,
+      "country": 2,
+      "title": "Flórida"
+    }
+  ],
+  "city": [
+    {
+      "id": 1,
+      "state": 1,
+      "title": "São Paulo"
+    },
+    {
+      "id": 2,
+      "state": 1,
+      "title": "Bauru"
+    },
+    {
+      "id": 3,
+      "state": 1,
+      "title": "Santos"
+    },
+    {
+      "id": 4,
+      "state": 2,
+      "title": "Rio de Janeiro"
+    },
+    {
+      "id": 5,
+      "state": 2,
+      "title": "Búzios"
+    },
+    {
+      "id": 6,
+      "state": 2,
+      "title": "Petropólis"
+    },
+    {
+      "id": 7,
+      "state": 3,
+      "title": "Salvador"
+    },
+    {
+      "id": 8,
+      "state": 3,
+      "title": "Mundo Novo"
+    },
+    {
+      "id": 9,
+      "state": 3,
+      "title": "Feira de Santana"
+    },
+    {
+      "id": 10,
+      "state": 4,
+      "title": "Houston"
+    },
+    {
+      "id": 11,
+      "state": 4,
+      "title": "Dallas"
+    },
+    {
+      "id": 12,
+      "state": 4,
+      "title": "Austin"
+    },
+    {
+      "id": 13,
+      "state": 5,
+      "title": "Los Angeles"
+    },
+    {
+      "id": 14,
+      "state": 5,
+      "title": "São Francisco"
+    },
+    {
+      "id": 15,
+      "state": 5,
+      "title": "Sacramento"
+    },
+    {
+      "id": 16,
+      "state": 6,
+      "title": "Orlando"
+    },
+    {
+      "id": 17,
+      "state": 6,
+      "title": "Miami"
+    },
+    {
+      "id": 18,
+      "state": 6,
+      "title": "Sarasota"
     }
   ],
   "users": [
@@ -25,6 +145,12 @@
       "worth": "",
       "address": "",
       "id": 2
+    },
+    {
+      "name": "",
+      "worth": "",
+      "address": "",
+      "id": 3
     }
   ],
   "products": [

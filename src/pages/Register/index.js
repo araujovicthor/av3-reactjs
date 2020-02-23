@@ -9,7 +9,10 @@ import Select from '../../components/Select';
 import Radio from '../../components/Radio';
 
 import { registerProfileRequest } from '../../store/modules/register/actions';
-import { countryRequest } from '../../store/modules/location/actions';
+import {
+  countryRequest,
+  stateRequest,
+} from '../../store/modules/location/actions';
 
 import { Container, Form, Partner, Button } from './styles';
 
@@ -20,18 +23,15 @@ import { Container, Form, Partner, Button } from './styles';
 
 export default function Register() {
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
-  const [countries, setCountries] = useState([]);
-
-  const dataCountry = useSelector(state => state.location.country);
+  const [showJoint, setShowJoint] = useState(false);
+  const [disableState, setDisableState] = useState(true);
 
   useEffect(() => {
     dispatch(countryRequest());
   }, []); // eslint-disable-line
 
-  useEffect(() => {
-    setCountries(dataCountry);
-  }, [dataCountry]);
+  const countries = useSelector(state => state.location.country);
+  const states = useSelector(state => state.location.state);
 
   function handleSubmit(data) {
     dispatch(registerProfileRequest(data));
@@ -65,17 +65,28 @@ export default function Register() {
         <DatePicker name="birthday" label="Date of Birth:" />
         <Input name="worth" label="Net Worth:" type="number" />
         <Input name="address" label="Address:" />
-        {countries.lenght && (
-          <Select
-            name="challenge_id"
-            id="challenge"
-            label="Country"
-            options={countries.options}
-            disabled={false}
-          />
-        )}
-        {/* <input name="state" label="State:" />
-         <input name="city" label="City:" /> */}
+        <Select
+          name="country"
+          id="country"
+          label="Country:"
+          placeholder="Select Country"
+          options={countries}
+          onChange={e =>
+            // eslint-disable-next-line radix
+            parseInt(e.target.value) === 0
+              ? setDisableState(true)
+              : (dispatch(stateRequest(e.target.value)), setDisableState(false))
+          }
+        />
+        <Select
+          name="state"
+          id="state"
+          label="State:"
+          placeholder="Select State"
+          options={states}
+          disabled={disableState}
+        />
+        {/* <input name="city" label="City:" /> */}
         <Radio
           name="joint"
           label="Joint Account:"
@@ -86,10 +97,12 @@ export default function Register() {
           defaultValue={0}
           onChange={e =>
             // eslint-disable-next-line radix
-            parseInt(e.target.value) === 1 ? setShow(true) : setShow(false)
+            parseInt(e.target.value) === 1
+              ? setShowJoint(true)
+              : setShowJoint(false)
           }
         />
-        {show && (
+        {showJoint && (
           <Partner>
             <Scope path="spouse">
               <Input name="name" label="Spouse Name:" />

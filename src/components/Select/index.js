@@ -9,7 +9,9 @@ export default function Select({
   options,
   defaultValue,
   disabled,
+  placeholder,
   label,
+  ...rest
 }) {
   const inputRefs = useRef([]);
   const { fieldName, registerField } = useField(name);
@@ -28,7 +30,10 @@ export default function Select({
   return (
     <Container>
       {label && <label htmlFor={fieldName}>{label}</label>}
-      <select disabled={disabled}>
+      <select disabled={disabled} {...rest}>
+        <option value="" disabled selected>
+          {placeholder}
+        </option>
         {options.map((option, index) => (
           <option
             // eslint-disable-next-line no-return-assign
@@ -49,6 +54,7 @@ export default function Select({
 Select.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -62,4 +68,5 @@ Select.propTypes = {
 Select.defaultProps = {
   defaultValue: null,
   disabled: false,
+  placeholder: 'Select your option',
 };
