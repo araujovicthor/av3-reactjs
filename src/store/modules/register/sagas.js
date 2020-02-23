@@ -7,7 +7,16 @@ import { registerProfileSuccess, registerProfileFailure } from './actions';
 
 export function* registerProfile({ payload }) {
   try {
-    const { name, birthday, worth, address, country, ...rest } = payload.data;
+    const {
+      name,
+      birthday,
+      worth,
+      address,
+      country,
+      state,
+      city,
+      ...rest
+    } = payload.data;
 
     const profile = {
       name,
@@ -15,6 +24,8 @@ export function* registerProfile({ payload }) {
       worth,
       address,
       country,
+      state,
+      city,
       ...(rest.joint === 1 ? rest : {}),
     };
 

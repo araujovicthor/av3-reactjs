@@ -7,14 +7,13 @@ import { Container } from './styles';
 export default function Select({
   name,
   options,
-  defaultValue,
   disabled,
   placeholder,
   label,
   ...rest
 }) {
   const inputRefs = useRef([]);
-  const { fieldName, registerField } = useField(name);
+  const { fieldName, registerField, error } = useField(name);
 
   useEffect(() => {
     registerField({
@@ -22,7 +21,12 @@ export default function Select({
       path: 'value',
       ref: inputRefs.current,
       getValue(refs) {
-        return refs.find(ref => ref.selected).value;
+        const selected = refs.find(ref => ref.selected);
+        if (selected) {
+          const { value } = selected;
+          return value;
+        }
+        return null;
       },
     });
   }, [fieldName, registerField]);
@@ -41,12 +45,12 @@ export default function Select({
             name={fieldName}
             key={option.id}
             value={option.id}
-            defaultChecked={option.id === defaultValue}
           >
             {option.title}
           </option>
         ))}
       </select>
+      {error && <span style={{ color: '#f00' }}>{error}</span>}
     </Container>
   );
 }
@@ -61,12 +65,10 @@ Select.propTypes = {
       title: PropTypes.string.isRequired,
     })
   ).isRequired,
-  defaultValue: PropTypes.number,
   disabled: PropTypes.bool,
 };
 
 Select.defaultProps = {
-  defaultValue: null,
   disabled: false,
   placeholder: 'Select your option',
 };

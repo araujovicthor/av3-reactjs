@@ -19,6 +19,8 @@ export const Form = styled(Unform)`
 `;
 
 export const Partner = styled.div`
+  padding: 10px;
+  margin-top: 10px;
   background-color: #e9e9e9;
 `;
 

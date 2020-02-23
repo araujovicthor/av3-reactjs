@@ -36,3 +36,23 @@ export function stateFailure() {
     type: '@location/STATE_FAILURE',
   };
 }
+
+export function cityRequest(state) {
+  return {
+    type: '@location/CITY_REQUEST',
+    payload: { state },
+  };
+}
+
+export function citySuccess(city) {
+  return {
+    type: '@location/CITY_SUCCESS',
+    payload: { city },
+  };
+}
+
+export function cityFailure() {
+  return {
+    type: '@location/CITY_FAILURE',
+  };
+}

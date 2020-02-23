@@ -7,6 +7,8 @@ import {
   countryFailure,
   stateSuccess,
   stateFailure,
+  citySuccess,
+  cityFailure,
 } from './actions';
 
 export function* countryGet() {
@@ -29,7 +31,19 @@ export function* stateGet({ payload }) {
   }
 }
 
+export function* cityGet({ payload }) {
+  try {
+    const { state } = payload;
+
+    const response = yield call(api.get, `city?state=${state}`);
+    yield put(citySuccess(response.data));
+  } catch (err) {
+    yield put(cityFailure());
+  }
+}
+
 export default all([
   takeLatest('@location/COUNTRY_REQUEST', countryGet),
   takeLatest('@location/STATE_REQUEST', stateGet),
+  takeLatest('@location/CITY_REQUEST', cityGet),
 ]);

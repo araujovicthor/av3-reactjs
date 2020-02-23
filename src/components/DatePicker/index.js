@@ -31,7 +31,7 @@ export default function DatePicker({ name, label }) {
         onChange={date => setSelected(date)}
         ref={ref}
       />
-      {error && <span>{error}</span>}
+      {error && <span style={{ color: '#f00' }}>{error}</span>}
     </Container>
   );
 }
