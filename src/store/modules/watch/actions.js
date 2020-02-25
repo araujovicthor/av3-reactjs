@@ -16,3 +16,23 @@ export function listFailure() {
     type: '@watch/LIST_FAILURE',
   };
 }
+
+export function getPickerRequest(symbol) {
+  return {
+    type: '@watch/PICKER_REQUEST',
+    payload: { symbol },
+  };
+}
+
+export function getPickerSuccess(picker) {
+  return {
+    type: '@watch/PICKER_SUCCESS',
+    payload: { picker },
+  };
+}
+
+export function getPickerFailure() {
+  return {
+    type: '@watch/PICKER_FAILURE',
+  };
+}

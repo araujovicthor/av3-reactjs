@@ -7,29 +7,7 @@ import { registerProfileSuccess, registerProfileFailure } from './actions';
 
 export function* registerProfile({ payload }) {
   try {
-    const {
-      name,
-      birthday,
-      worth,
-      address,
-      country,
-      state,
-      city,
-      ...rest
-    } = payload.data;
-
-    const profile = {
-      name,
-      birthday,
-      worth,
-      address,
-      country,
-      state,
-      city,
-      ...(rest.joint === 1 ? rest : {}),
-    };
-
-    const response = yield call(api.post, 'users', profile);
+    const response = yield call(api.post, 'users', payload.data);
 
     toast.success('Perfil atualizado com sucesso!');
 

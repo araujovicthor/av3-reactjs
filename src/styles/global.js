@@ -35,4 +35,8 @@ export default createGlobalStyle`
     cursor: pointer;
     border: 0;
   }
+
+  table, th, td {
+  border: 1px solid #333;
+}
 `;

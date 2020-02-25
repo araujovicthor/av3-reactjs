@@ -133,5 +133,19 @@
       "title": "Sarasota"
     }
   ],
-  "users": []
+  "users": [],
+  "stock": [
+    {
+      "id": "AAPL",
+      "title": "AAPL"
+    },
+    {
+      "id": "AMZN",
+      "title": "AMZN"
+    },
+    {
+      "id": "MSFT",
+      "title": "MSFT"
+    }
+  ]
 }

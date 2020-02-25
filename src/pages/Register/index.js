@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Scope } from '@unform/core';
 import * as Yup from 'yup';
 
 import Input from '../../components/Input';
@@ -34,7 +33,6 @@ export default function Register() {
 
   async function handleSubmit(data, { reset }) {
     try {
-      // Remove all previous errors
       formRef.current.setErrors({});
       const schema = Yup.object().shape({
         name: Yup.string().required('Name is required'),
@@ -54,6 +52,12 @@ export default function Register() {
           .nullable('City is required')
           .required('City is required'),
         joint: Yup.number().required('Option for Joint Account is required'),
+        spouseName: Yup.string().when('joint', (joint, field) =>
+          joint === 1 ? field.required('Name is required') : field
+        ),
+        spouseBirthday: Yup.date().when('joint', (joint, field) =>
+          joint === 1 ? field.required('Date of birth is required') : field
+        ),
       });
       await schema.validate(data, {
         abortEarly: false,
@@ -130,10 +134,8 @@ export default function Register() {
         />
         {showJoint && (
           <Partner>
-            <Scope path="spouse">
-              <Input name="name" label="Spouse Name:" />
-              <DatePicker name="birthday" label="Spouse DoB:" />
-            </Scope>
+            <Input name="spouseName" label="Spouse Name:" />
+            <DatePicker name="spouseBirthday" label="Spouse DoB:" />
           </Partner>
         )}
         <Button>
