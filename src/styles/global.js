@@ -18,13 +18,13 @@ export default createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased !important;
-    background: #fff;
+    background: #262E2E;
   }
 
   body, button, input {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
-    color: #333;
+    color: #fff;
   }
 
   ul {
@@ -37,6 +37,10 @@ export default createGlobalStyle`
   }
 
   table, th, td {
-  border: 1px solid #333;
-}
+    border: 1px solid #fff;
+  }
+
+  h1, h2, h3, h4, h5, span, p {
+    color: #fff;
+  }
 `;

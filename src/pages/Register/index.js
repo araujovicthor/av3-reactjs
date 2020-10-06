@@ -78,14 +78,27 @@ export default function Register() {
   return (
     <Container>
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <Input name="name" label="Name:" />
-        <DatePicker name="birthday" label="Date of Birth:" />
-        <Input name="worth" label="Net Worth:" type="number" />
-        <Input name="address" label="Address:" />
+        <Input name="name" label="Name" placeholder="Insert a name" />
+        <DatePicker
+          name="birthday"
+          label="Date of Birth"
+          placeholder="Insert the Date of Birth"
+        />
+        <Input
+          name="worth"
+          label="Net Worth"
+          type="number"
+          placeholder="Insert the Net Worth"
+        />
+        <Input
+          name="address"
+          label="Address"
+          placeholder="Insert the address"
+        />
         <Select
           name="country"
           id="country"
-          label="Country:"
+          label="Country"
           placeholder="Select Country"
           options={countries}
           onChange={e =>
@@ -98,7 +111,7 @@ export default function Register() {
         <Select
           name="state"
           id="state"
-          label="State:"
+          label="State"
           placeholder="Select State"
           options={states}
           disabled={disableState}
@@ -112,7 +125,7 @@ export default function Register() {
         <Select
           name="city"
           id="city"
-          label="City:"
+          label="City"
           placeholder="Select City"
           options={cities}
           disabled={disableCity}
@@ -133,10 +146,18 @@ export default function Register() {
           }
         />
         {showJoint && (
-          <Partner>
-            <Input name="spouseName" label="Spouse Name:" />
-            <DatePicker name="spouseBirthday" label="Spouse DoB:" />
-          </Partner>
+          <>
+            <Input
+              name="spouseName"
+              label="Spouse Name"
+              placeholder="Insert Spouse Name"
+            />
+            <DatePicker
+              name="spouseBirthday"
+              label="Spouse DoB"
+              placeholder="Insert Spouse DoB"
+            />
+          </>
         )}
         <Button>
           <button type="submit">Submit</button>
