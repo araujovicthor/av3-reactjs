@@ -29,6 +29,7 @@ export default function DatePicker({ name, label }) {
         name={fieldName}
         selected={selected}
         onChange={date => setSelected(date)}
+        placeholderText="Date"
         ref={ref}
       />
       {error && <span style={{ color: '#f00' }}>{error}</span>}
